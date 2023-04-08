@@ -1,0 +1,77 @@
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #050210;
+}
+
+#circle-animation {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 300px;
+  border-radius: 300px;
+  background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+  animation: circle-animation 1s infinite linear;
+}
+
+@keyframes circle-animation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+#circle-animation:before {
+  content: "";
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  border-radius: 300px;
+  background: linear-gradient(#fb5dad, #55fb9f, #b97aff);
+  filter: blur(50px);
+  border-radius: -10px;
+  z-index: -1;
+}
+
+#inner-circle {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 250px;
+  height: 250px;
+  border-radius: 250px;
+  background-color: #050210;
+}
+
+#inner-circle::before,
+#inner-circle::after {
+  content: "";
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 250px;
+  background-color: #100a26;
+  transform: scale(0);
+  animation: inner-circle-animation 2s infinite;
+}
+
+#inner-circle::before {
+  animation-delay: 1s;
+}
+
+@keyframes inner-circle-animation {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
